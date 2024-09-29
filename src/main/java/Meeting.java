@@ -7,6 +7,7 @@ public class Meeting extends Task {
         super(id); // вызов родительского конструктора
         this.topic = topic; // заполнение своих полей
         this.project = project; // заполнение своих полей
+        this.start = start; // заполнение своих полей
     }
 
     public String getTopic() {
