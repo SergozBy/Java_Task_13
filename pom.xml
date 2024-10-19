@@ -73,6 +73,11 @@
                                     </limits>
                                 </rule>
                             </rules>
+                            <excludes>
+                                <exclude>Netolgy/*</exclude>
+                                <exclude>**/Main.class</exclude>
+                                <exclude>**/Task.class</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
                 </executions>

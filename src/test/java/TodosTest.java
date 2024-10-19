@@ -150,6 +150,15 @@ public class TodosTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldNotWillFind() {
+        Task task = new Task(10);
+
+        Boolean expected = false;
+        Boolean actual = task.matches("Невидимка");
+        Assertions.assertEquals(expected, actual);
+    }
+
     // FOR STATISTIC ONLY
     // Task
     // getId from Task
@@ -159,6 +168,61 @@ public class TodosTest {
 
         int expected = 10;
         int actual = task.getId();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetHashCode() {
+        Task task = new Task(10);
+
+        int expected = 41;
+        int actual = task.hashCode();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotBeEquals() {
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, subtasks);
+
+        Todos todos = new Todos();
+        todos.add(simpleTask);
+        todos.add(epic);
+
+        boolean expected = false;
+        boolean actual = simpleTask.equals(epic);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldBeEquals() {
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, subtasks);
+
+        Todos todos = new Todos();
+        todos.add(simpleTask);
+        todos.add(epic);
+
+        boolean expected = true;
+        boolean actual = simpleTask.equals(simpleTask);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldCantBeEquals() {
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, subtasks);
+
+        Todos todos = new Todos();
+        todos.add(simpleTask);
+        todos.add(epic);
+
+        int i = 0;
+        boolean expected = false;
+        boolean actual = simpleTask.equals(i);
         Assertions.assertEquals(expected, actual);
     }
 
